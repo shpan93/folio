@@ -1,0 +1,37 @@
+#experience{
+    
+    .item{
+        width:calc(50% - 50px);
+        header{
+            display:flex;
+            justify-content:flex-start;
+            align-items:center;
+
+            .img-wr{
+                max-width:60%;
+                margin-right:50px;
+                img{
+                    max-height:50px;
+                }
+            }
+            .info{
+                .duration{
+                    @include font($source-italic, 1rem);
+                }
+                .title{
+                     @include font($source-bolditalic, 1rem);
+                }
+                a{
+                       @include font($source-italic, 1rem);
+                }
+            }
+        }
+        .description{
+            @extend .paragraph;
+            font-family:$source-light;
+
+        }
+      
+    }
+  
+}

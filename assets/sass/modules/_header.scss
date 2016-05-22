@@ -1,0 +1,43 @@
+header#header {
+    padding: 30px 0;
+
+    .items-wr {
+        flex-basis: 50%;
+    }
+
+    .contacts {
+        @include font($aleo-l, 1rem);
+    }
+
+    .right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .contacts {
+        align-self: flex-end;
+    }
+
+    .avatar {
+        max-width: 120px;
+        margin-left: 10px;
+
+        .rhombus {
+            width: 100px;
+            height: 100px;
+               
+            box-shadow: 0 0 5px darken($grey,40%);
+            border: 3px solid $grey;
+        }
+        //@extend .rhombus;
+        .rhombus-wr {
+            background: url(../images/avatar.jpg) no-repeat center center;
+            background-size: cover;
+        }
+    }
+
+    p.location {
+        @include font($aleo-r, 1.5rem, 2rem);
+    }
+}

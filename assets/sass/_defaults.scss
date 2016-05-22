@@ -1,0 +1,140 @@
+$white: #fff;
+$grey: #f7f7f7;
+
+html, body {
+    height: 100%;
+    font-family: $aleo-l;
+    letter-spacing: 0.03rem;
+    font-size: 18px;
+    // line-height:1.25rem;
+    color: #383938;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:active, &:hover, &:visited {
+        text-decoration: none;
+    }
+}
+
+.paragraph {
+    margin: 1rem 0;
+}
+
+section {
+    padding: 35px 0;
+    position: relative;
+
+    .section-icon {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%,-50%) rotate(45deg);
+        height: 50px;
+        width: 50px;
+        overflow: hidden;
+    }
+
+    &.grey {
+        background-color: #f7f7f7;
+
+        .section-icon {
+            background-color: $white;
+            box-shadow: 0 0 5px darken($grey,0%);
+            border: 3px solid $grey;
+        }
+    }
+
+    &.white {
+        background-color: #fff;
+
+        .section-icon {
+            background-color: $grey;
+            box-shadow: 0 0 5px $white;
+            border: 3px solid $white;
+        }
+    }
+}
+
+.wr {
+    max-width: 1280px;
+    margin: 0 auto;
+     padding: 1rem 0;
+}
+
+h1 {
+    color: #ce5f23;
+    font-size: 3rem;
+    font-family: $proxima-sb;
+
+    span {
+        font-family: $proxima-r;
+    }
+}
+h3{
+    font-family:$aleo-b;
+    text-transform:uppercase;
+    font-size:1.2rem;
+    line-height:2rem;
+    //padding:0.5rem 0;
+    margin-bottom:1rem;
+    text-align:center;
+    span{
+        display:inline-block;
+        position:relative;
+        padding:0 0 3px;
+        &:after{
+            content:'';
+            position:absolute;
+            bottom:0;
+            left:50%;
+            transform:translateX(-50%);
+            width:50%;
+            height:3px;
+            background:currentColor;
+        }
+    }
+}
+.items-wr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rhombus {
+    /*-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);*/
+    transform: rotate(45deg);
+    overflow: hidden;
+    position: relative;
+
+    .rhombus-wr {
+        height: 100%;
+        transform: rotate(-45deg) scale(1.4);
+    }
+}
+
+
+img {
+    max-width: 100%;
+}
+
+.icon {
+    transform: rotate(-45deg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 50% auto;
+    background-position: center center;
+
+    &--summary {
+        background-image: url(../images/icon-summary.png);
+    }
+}
+
+#svg-circle{
+    circle{
+        fill:transparentize(#000,0.95);
+    }
+}

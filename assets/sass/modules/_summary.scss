@@ -1,0 +1,28 @@
+#summary{
+    
+    .items-wr{
+        flex-basis:50%;
+       
+    }
+    .contacts{
+        @include font($aleo-l, 1rem);
+    }
+    .right{
+        
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+    .contacts{
+        align-self:flex-end;
+    }
+    .avatar{
+        max-width:120px;
+        margin-left:10px;
+       @extend .rhombus;
+    }
+    
+    p.location{
+        @include font($aleo-r, 1.5rem, 2rem);
+    }
+}

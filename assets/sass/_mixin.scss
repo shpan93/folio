@@ -1,0 +1,110 @@
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin fa-icon {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin abs() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin absnum($top,$right,$bottom,$left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+@mixin loader {
+  &:before {
+    content: '';
+    @include abs;
+    z-index: -1;
+    background: url(/assets/images/rolling.svg) center center no-repeat rgba(0, 0, 0, 0.4);
+    background-size: 10% 10%;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  &.loading {
+    &:before {
+      z-index: 1;
+      opacity: 1;
+      transition-duration:0s;
+    }
+  }
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: 0;
+    border-radius: 0px;
+    background: transparentize(#0162a6, 0.3);
+    -webkit-transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background: lighten(#076db7, 10%);
+    -webkit-box-shadow: 0;
+    transition: background 0.3s;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: lighten(#076db7, 0);
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: darken(#076db7, 10);
+  }
+
+  @media only screen and (max-width: 768px) {
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+  }
+
+}

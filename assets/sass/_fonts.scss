@@ -1,0 +1,54 @@
+@mixin fontFace($FontName, $FontPathName ) {
+    
+@font-face {
+    
+  font-family: '#{$FontName}';
+	src:	url('../fonts/#{$FontPathName}.eot');
+    src:	url('../fonts/#{$FontPathName}.eot?#iefix') format('embedded-opentype'),
+			url('../fonts/#{$FontPathName}.woff2') format('woff2'),
+            url('../fonts/#{$FontPathName}.woff') format('woff'),
+            url('../fonts/#{$FontPathName}.ttf') format('truetype');
+    
+  font-weight: normal;
+  font-style: normal;
+  }
+}
+
+
+@include fontFace('proximanovaregular','proximanovaregular');
+
+@include fontFace('proximanovasemibold','proximanovasemibold');
+
+@include fontFace('AleoBold','AleoBold');
+
+@include fontFace('AleoLight','AleoLight');
+
+@include fontFace('AleoRegular','AleoRegular');
+@include fontFace('SourceSansProBlack','SourceSansProBlack');
+@include fontFace('SourceSansProBoldIt','SourceSansProBoldIt');
+@include fontFace('SourceSansProIt','SourceSansProIt');
+@include fontFace('SourceSansProLight','SourceSansProLight');
+
+
+
+$proxima-r:'proximanovaregular';
+$proxima-sb:'proximanovasemibold';
+$aleo-b:'AleoBold';
+$aleo-l : 'AleoLight';
+$aleo-r : 'AleoRegular';
+$source-black : 'SourceSansProBlack';
+$source-bolditalic : 'SourceSansProBoldIt';
+$source-italic : 'SourceSansProIt';
+$source-light: 'SourceSansProLight';
+
+@mixin font($family,$fs,$lh:false) {
+
+    //$lh:false !default;
+
+    font-family: $family;
+    font-size: $fs;
+
+    @if ($lh) {
+        line-height: $lh;
+    }
+}
