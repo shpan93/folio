@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.10.0",
+    "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-plumber": "~0.6.5",

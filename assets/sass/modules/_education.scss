@@ -1,4 +1,4 @@
-#education-training {
+﻿#education-training {
     .items-wr.bottom {
         position: relative;
         padding-top: 1px;
@@ -113,7 +113,7 @@
 
         .item {
             $w: 100/ 6 + 0%;
-            width: calc( 100%/6 - 2px );
+            width: calc( 100%/6 - 1px );
             //  background: transparentize(#000,0.95);
             //  box-shadow:0px 0px 0px 1px transparentize(#000,0.95) inset;
             outline: 1px solid transparentize(#000,0.95);
@@ -215,15 +215,17 @@
 }
 
 #projects {
-    .items-wr{
-        justify-content:flex-start;
-        flex-wrap:wrap;
+    .items-wr {
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
+
     .item {
         //width: 33.33333%;
         width: calc(100% / 3 - 2px);
-       outline: 1px solid transparentize(#fff,0);
+        outline: 1px solid transparentize(#fff,0);
         margin: 1px;
+        cursor: pointer;
 
         .item__ratio {
             padding-top: 100%;
@@ -248,9 +250,9 @@
                         bottom: $const;
                         background-size: cover;
                         background-repeat: no-repeat;
-                        background-position: center top;
+                        background-position: center center;
                         transform: scale(1.05);
-                        transform-origin: center top;
+                        transform-origin: center center;
                         transition: transform 0.5s;
                     }
 
@@ -314,29 +316,29 @@
             }
         }
 
-        $projects : activia suzuki bhub pmu pepsi avellum minute;
-        $colors: #66B751  #fff #fff #07599F #084D92 #5F3B79 #fff;
-        @each $project in $projects {
-                $i: index($projects, $project);
+        $projects: activia suzuki bhub pmu pepsi avellum minute;
+        $colors: #66B751 #fff #fff #07599F #084D92 #5F3B79 #fff;
 
-            &.#{$project}{
-                 .item__ratio .item__inner {
-                .snapshot {
-                    &:before, &:after {
-                        background-image: url("../images/projects/#{$project}-snapshot.png");
+        @each $project in $projects {
+            $i: index($projects, $project);
+
+            &.#{$project} {
+                .item__ratio .item__inner {
+                    .snapshot {
+                        &:before, &:after {
+                            background-image: url("../images/projects/#{$project}-promo.jpg");
+                        }
+                    }
+
+                    &:after {
+                        z-index: 1;
+                        //nth($background-colors-list, $i);
+                        background-color: transparentize(nth($colors, $i),0.25);
+                        background-image: url(../images/projects/#{$project}-logo.png);
                     }
                 }
-
-                &:after {
-                    z-index: 1;
-                    //nth($background-colors-list, $i);
-                    background-color: transparentize(nth($colors, $i),0.25);
-                    background-image: url(../images/projects/#{$project}-logo.png);
-                }
-            }
             }
         }
-
         /*&.activia {
             .item__ratio .item__inner {
                 .snapshot {
@@ -385,36 +387,221 @@
         }*/
     }
 
-    .popup{
-        left:0;
-        top:0;
-        width:100%;
-        height:100%;
-        position:fixed;
-        z-index:1;
+    .popup {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 0;
+        visibility: hidden;
+        pointer-events: none;
+        background-color: #66b751;
+        //   background-image: url("../images/projects/green-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        /*transition-property: left, top, width,height;
+        transition-duration: 0.5s;*/
+        $projects: activia suzuki bhub pmu pepsi avellum minute;
+        //  $url:"../images/projects/green-bg.jpg" "../images/projects/green-bg.jpg";
+        @each $project in $projects {
+            $i: index($projects, $project);
 
-        background-color:#66b751;
-            background-image: url("../images/projects/activia-snapshot.png");
-            background-size:cover;
-            background-repeat:no-repeat;
-            background-position:center top;
-        transition-property: left, top, width ,height;
-        transition-duration:0.5s;
-
-        .popup-wr{
-            height:100%;
+            &.#{$project}, &-pseudo.#{$project} .inner {
+                background-image: url(../images/projects/#{$project}-bg.jpg);
+            }
+              &.#{$project} .project__logo .inner:before{
+                    background-image: url(../images/projects/#{$project}-promo.jpg);
+             }
         }
-        .project-item{
-            height:100%;
-            width:100%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            .wr{
-                background:transparentize(#fff, 0.1);
-                 height:calc(100% - 40px);
-                 width:1200px;
-                 padding:0;
+
+        &-pseudo {
+            position: fixed;
+            z-index: 1;
+            opacity: 0;
+            overflow: hidden;
+            pointer-events: none;
+
+            .inner {
+                position: fixed;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background-size: cover;
+                //   background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            &.is-animated {
+                transition-property: left, top, width,height,opacity;
+                transition-duration: 0.5s;
+            }
+
+            &.opened {
+                opacity: 1;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+
+            &.fade-out {
+                opacity: 0;
+            }
+        }
+
+        .popup-wr {
+            height: 100%;
+        }
+
+        .project {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition-property: opacity, transform;
+            transition-duration: 0.3s;
+
+            .wr {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+
+                background: transparentize(#fff, 0.1);
+                //   height: calc(100% - 80px);
+                position: relative;
+                width: 50%;
+                padding: 40px;
+                box-sizing: border-box;
+
+                .close-icon {
+                    cursor: pointer;
+                    right: -40px;
+                    top: -40px;
+                    height: 30px;
+                    width: 30px;
+                    position: absolute;
+                    /*&:before {
+                        content: '✕';
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        font-size
+                    }*/
+                    &:before, &:after {
+                        content: '';
+                        background: $darkgrey;
+                        width: 80%;
+                        height: 3px;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform-origin: center center;
+                        transition-property: width, background;
+                        transition-duration: 0.3s;
+                    }
+
+                    &:before {
+                        transform: translate(-50%,-50%) rotate(-45deg);
+                    }
+
+                    &:after {
+                        transform: translate(-50%,-50%) rotate(45deg);
+                    }
+
+                    &:hover {
+                        &:before, &:after {
+                            width: 90%;
+                            background: $orange;
+                        }
+                    }
+
+                    &:active {
+                        &:before, &:after {
+                            width: 100%;
+                            background: lighten($orange,30%);
+                        }
+                    }
+                }
+            }
+
+            header {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+
+            &__logo {
+                width: 30%;
+                box-sizing: border-box;
+
+                .inner {
+                    padding-top: 100%;
+                    position: relative;
+
+                    &:before {
+                        content: '';
+                        @include abs;
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: cover;
+                        background-image: url(../images/projects/activia-promo.png);
+                    }
+                }
+            }
+
+            &__description {
+                width: 70%;
+                padding-left: 80px;
+
+                h4 {
+                    // @extend h3;
+                    font-family: $aleo-b;
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                    //padding:0.5rem 0;
+                    margin-bottom: 1rem;
+                    border-bottom: 3px solid $orange;
+                    display: flex;
+                    justify-content: space-between;
+
+                    span {
+                        text-transform: uppercase;
+                    }
+
+                    a {
+                        font-size: 1rem;
+                        font-family: $aleo-l;
+                        transition: color 0.3s;
+
+                        &:hover {
+                            //color: lighten(#383938,20%);
+                            color: lighten($orange,10%);
+                        }
+                    }
+                }
+
+                p {
+                    font-family: $proxima-r;
+                }
+            }
+        }
+
+        &.active {
+            z-index: 1;
+            visibility: visible;
+            pointer-events: all;
+
+            .project {
+                opacity: 1;
+                transform: translateY(0) translateZ(0);
             }
         }
     }
