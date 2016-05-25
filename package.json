@@ -15,6 +15,10 @@
   "bugs": {
     "url": "https://github.com/scotch-io/gulp-start/issues"
   },
+  
+  "dependencies":{
+     "express": "^4.13.4",
+  },
   "devDependencies": {
     "browser-sync": "^2.10.0",
    
