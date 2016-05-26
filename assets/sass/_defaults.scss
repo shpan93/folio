@@ -122,16 +122,24 @@ img {
     max-width: 100%;
 }
 
+$icons: summary tools education projects interests experience;
 .icon {
     transform: rotate(-45deg);
     height: 100%;
     background-repeat: no-repeat;
     background-size: 50% auto;
     background-position: center center;
-
-    &--summary {
-        background-image: url(../images/icon-summary.png);
+    @each $icon in $icons {
+        &--#{$icon}{
+             background-image: url(../images/icon-#{$icon}.png);
+             @if ($icon == experience){
+                  background-size: 30% auto;
+             }
+        }
     }
+    /*&--summary {
+        background-image: url(../images/icon-summary.png);
+    }*/
 }
 
 #svg-circle{

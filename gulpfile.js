@@ -49,7 +49,7 @@ gulp.task('serve', ['sass'], function () {
 gulp.task('sass', function () {
     return gulp.src(src.scss)
                .pipe(plumber())
-        .pipe(sourcemaps.init())
+     //   .pipe(sourcemaps.init())
        
         .pipe(sass.sync({
             outputStyle: 'compressed',
@@ -58,7 +58,7 @@ gulp.task('sass', function () {
              browsers: ['last 50 versions'],
              cascade: false
          }))
-        .pipe(sourcemaps.write(src.map))
+      //  .pipe(sourcemaps.write(src.map))
         .pipe(gulp.dest(src.css))
 
         .pipe(browserSync.stream());

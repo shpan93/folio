@@ -1,43 +1,87 @@
+@media only screen and (max-width: 1280px) {
+    .wr {
+        padding: 0 20px;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
-    footer .copyright {
-        left: 10px;
+    #projects .popup .project .wr{
+        width:calc(90% - 40px);
+    }
+    html, body {
+       font-size:14px;
+    }
+    h1{
+        font-size:2rem;
+        text-align:center;
+    }
+    section{
+        padding:50px 0;
+    }
+    .location{
+        text-align:center;
     }
 
-    footer .social {
-        right: 10px;
+      header#header {
+          padding:20px 0 30px;
+          margin:0 0 30px;
+      }
+    header#header .items-wr{
+          flex-flow: column;
+          .right{
+              order:-1;
+              flex-direction:column;
+              .avatar{
+                  margin:30px auto; 
+                  max-width:100px;
+                  .rhombus{
+                      width:75px;
+                      height:75px;
+                  }
+              }
+          }
+    }
+    #experience ,#education-training{
+        .items-wr {
+            flex-flow: column;
+        }
+
+        .item {
+            width: auto;
+        }
+    }
+    #education-training .items-wr.bottom{
+        display:none;
+    }
+    #skills-tools .items-wr .item {
+        width: calc( 100%/4 - 1px);
     }
 
-    footer .social a {
-        margin: -2px 2px 0;
+    #projects .item {
+        width: calc(100% / 2 - 2px);
     }
+}
 
-    footer ul li {
-        margin: 0 30px 0 -20px;
-    }
-
-    .mobile-btn-box {
-        display: block;
-        color: #fff;
-        position: absolute;
-        top: 50%;
-        z-index: 999;
-        left: 50%;
-        font-size: 10vw;
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        cursor: pointer;
-
-        .play {
-            -moz-transition: opacity .3s;
-            -o-transition: opacity .3s;
-            -webkit-transition: opacity .3s;
-            transition: opacity .3s;
-            &.hide{
-                opacity:0;
-                pointer-events:none;
+@media only screen and (max-width:768px ) {
+       #projects .popup .project .wr{
+        width:calc(100% - 20px);
+        padding:20px ;
+        .close-icon{
+            width:15px;
+            height:15px;
+            top:5px;
+            right:5px;
+        }
+        header {
+            flex-flow:column;
+            .project__logo{
+                margin: 20px auto ;
+                width:30%;
+                
+            }
+            .project__description{
+                width:auto;
+                padding:0;
             }
         }
     }

@@ -411,9 +411,25 @@
             &.#{$project}, &-pseudo.#{$project} .inner {
                 background-image: url(../images/projects/#{$project}-bg.jpg);
             }
-              &.#{$project} .project__logo .inner:before{
-                    background-image: url(../images/projects/#{$project}-promo.jpg);
-             }
+
+            &.#{$project} .project__logo .inner:before {
+                background-image: url(../images/projects/#{$project}-promo.jpg);
+            }
+
+            &.#{$project} .wr.#{$project} {
+                &:before {
+                    content: '';
+                    @include abs;
+                    background-image: url(../images/projects/#{$project}-bg.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                    background-position: 50%;
+                    /* background-size: 100vh 100vw; */
+                    z-index: -1;
+                    -webkit-filter: blur(20px);
+                    margin: -20px;
+                }
+            }
         }
 
         &-pseudo {
@@ -438,6 +454,8 @@
             &.is-animated {
                 transition-property: left, top, width,height,opacity;
                 transition-duration: 0.5s;
+                
+            transition-timing-function:ease-in-out;
             }
 
             &.opened {
@@ -466,7 +484,8 @@
             opacity: 0;
             transform: translateY(-10px);
             transition-property: opacity, transform;
-            transition-duration: 0.3s;
+            transition-duration: 0.4s;
+            transition-timing-function:ease-in-out;
 
             .wr {
                 display: none;
@@ -475,7 +494,7 @@
                     display: block;
                 }
 
-                background: transparentize(#fff, 0.1);
+                background: transparentize(#fff, 0.7);
                 //   height: calc(100% - 80px);
                 position: relative;
                 width: 50%;

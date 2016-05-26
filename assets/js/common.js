@@ -16,6 +16,10 @@ var popups = (function () {
     var $popup = $('.popup');
     var $popupPseudo = $('.popup-pseudo');
     var $close = $('.close-icon');
+    
+    var config = {
+        throttle:false
+    }
     _self.position = {};
     _self.currentPopup = '';
     
@@ -41,6 +45,8 @@ var popups = (function () {
     }
     _self.bindEvents = function () {
         $items.on('click', function () {
+            if(config.throttle) return false;
+            config.throttle = true;
             _self.position = {
                 left: $(this).offset().left,
                 top: $(this).offset().top - $(document).scrollTop(),
@@ -57,6 +63,7 @@ var popups = (function () {
               setTimeout(function(){
                   $popupPseudo.removeClass('is-animated fade-out ' + _self.currentPopup).attr('style','');
                   $popup.find('.project .wr').removeClass('active');
+                  config.throttle = false;
               },500);
             //   setTimeout(function (name)(params) {
                   
