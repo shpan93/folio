@@ -36,8 +36,9 @@ var src = {
 gulp.task('serve', ['sass'], function () {
 
     browserSync({
-        startPath: "/",
-        proxy: "localhost:19089"
+        server:'./',
+      //  startPath: "/",
+       // proxy: "localhost:19089"
     });
 
     gulp.watch(src.scss, ['sass']);

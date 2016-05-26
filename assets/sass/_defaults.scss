@@ -9,14 +9,24 @@ html, body {
     font-size: 18px;
     // line-height:1.25rem;
     color: #383938;
+    &.no-scroll{
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 a {
     text-decoration: none;
     color: inherit;
-
+transition: color 0.3s ;
     &:active, &:hover, &:visited {
         text-decoration: none;
+    }
+    &:hover {
+        //color: lighten(#383938,20%);
+        color: lighten($orange,10%);
     }
 }
 
@@ -107,7 +117,7 @@ h3{
 .rhombus {
     /*-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);*/
-    transform: rotate(45deg);
+    transform: translateX(-20.71%) rotate(45deg);
     overflow: hidden;
     position: relative;
 

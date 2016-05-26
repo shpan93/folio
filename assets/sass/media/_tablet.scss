@@ -1,6 +1,7 @@
 @media only screen and (max-width: 1280px) {
     .wr {
         padding: 0 20px;
+        margin:20px auto;
     }
 }
 
@@ -63,6 +64,26 @@
 }
 
 @media only screen and (max-width:768px ) {
+
+    .rhombus{
+        transform: rotate(45deg);
+    }
+    p{
+        text-align: justify;
+    }
+    #education-training .item{
+        padding:15px 0;
+    }
+    #experience .item header{
+        &>div{
+            flex-basis:50%;
+            margin: 0;
+        }
+    }
+    #skills-tools .items-wr .item{
+        width:calc( 100%/2 - 1px);
+
+    }
        #projects .popup .project .wr{
         width:calc(100% - 20px);
         padding:20px ;
@@ -82,6 +103,9 @@
             .project__description{
                 width:auto;
                 padding:0;
+                h4{
+                    flex-flow:column;
+                }
             }
         }
     }

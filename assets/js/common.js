@@ -16,7 +16,8 @@ var popups = (function () {
     var $popup = $('.popup');
     var $popupPseudo = $('.popup-pseudo');
     var $close = $('.close-icon');
-    
+    var $body = $('body');
+
     var config = {
         throttle:false
     }
@@ -38,7 +39,8 @@ var popups = (function () {
         setTimeout(function () {
             $popupPseudo.addClass('is-animated opened ' + _self.currentPopup);
              setTimeout(function () {
-                $popup.addClass('active ' + _self.currentPopup); 
+                $popup.addClass('active ' + _self.currentPopup);
+                 $body.addClass('no-scroll')
              },500);
         }, 10);
         console.log(_self.position)
@@ -55,14 +57,16 @@ var popups = (function () {
             };
             _self.currentPopup = $(this).attr('class').replace(/(item)/, '').trim();
             _self.setPopupRect();
+
         });
         $close.on('click', function () {
               $popup.removeClass('active ' + _self.currentPopup); 
               $popupPseudo.removeClass('opened').addClass('fade-out');
-               
+
               setTimeout(function(){
                   $popupPseudo.removeClass('is-animated fade-out ' + _self.currentPopup).attr('style','');
                   $popup.find('.project .wr').removeClass('active');
+                  $body.removeClass('no-scroll')
                   config.throttle = false;
               },500);
             //   setTimeout(function (name)(params) {
