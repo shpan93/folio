@@ -15,6 +15,9 @@ html, body {
         width: 100%;
         -webkit-overflow-scrolling: touch;
     }
+    //&::-webkit-scrollbar {
+    //    width: 0px;
+    //}
 }
 
 a {

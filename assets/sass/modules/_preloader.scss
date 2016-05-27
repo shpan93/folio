@@ -1,0 +1,51 @@
+﻿main{
+  transform:translateY(-5vh);
+  opacity:0;
+  transition: opacity 0.3s, transform 0.3s;
+  &.loaded{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.preloader {
+  @include abs;
+  position: fixed;
+  z-index: 3;
+  background: #f7f7f7;
+  opacity:1;
+  transition:opacity 0.3s  0.3s;
+  .canvas-wr {
+    @include center;
+    canvas{
+      transition:transform 0.3s;
+    }
+    &:before{
+      z-index:-1;
+      content: '';
+      @include abs;
+
+      transform: rotate(45deg);
+      background: #ffffff;
+      transition:transform 0.3s;
+    }
+  }
+  &.loaded-animation {
+    opacity:0;
+    .canvas-wr{
+      canvas{
+        transform: scale(0);
+      }
+      &:before{
+        transform: scale(25) rotate(45deg);
+        @media (max-width:768px) {
+          transform: scale(7) rotate(45deg);
+        }
+      }
+    }
+  }
+  &.loaded{
+    z-index:-1;
+    pointer-events: none;
+  }
+}

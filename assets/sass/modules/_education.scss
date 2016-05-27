@@ -406,11 +406,13 @@
     background-position: center center;
     /*transition-property: left, top, width,height;
     transition-duration: 0.5s;*/
+    $bgPreload:();
     $projects: activia suzuki bhub pmu pepsi avellum minute;
     //  $url:"../images/projects/green-bg.jpg" "../images/projects/green-bg.jpg";
     @each $project in $projects {
         $i: index($projects, $project);
-
+        $bgPreload:append($bgPreload,url(../images/projects/#{$project}-bg.jpg) );
+        //$bgPreload: $bgPreload + ;
         &.#{$project}, &-pseudo.#{$project} .inner {
             background-image: url(../images/projects/#{$project}-bg.jpg);
         }
@@ -419,7 +421,7 @@
             background-image: url(../images/projects/#{$project}-promo.jpg);
         }
 
-        &.#{$project} .wr.#{$project} {
+         .wr.#{$project} {
             &:before {
                 content: '';
                 @include abs;
@@ -434,7 +436,13 @@
             }
         }
     }
+    &:after{
+        position:absolute; z-index:-1;
+        content:$bgPreload;
 
+        visibility: hidden;
+        pointer-events: none;
+    }
     &-pseudo {
         position: fixed;
         z-index: 1;
