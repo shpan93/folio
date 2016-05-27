@@ -81,7 +81,8 @@
         }
     }
     #skills-tools .items-wr .item{
-        width:calc( 100%/2 - 1px);
+        width:calc( 100%/4 - 1px);
+        pointer-events: none;
 
     }
        #projects .popup .project .wr{
